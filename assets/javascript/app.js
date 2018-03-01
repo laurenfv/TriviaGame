@@ -125,9 +125,9 @@ $(document).ready(function(){
     //handles loss after timer runs out
     var handleLoss = function(){
         wrongAnswers++;
-        //clearInterval(timer);
-        //displayWrong();
-        //countQ++
+        clearInterval(timer);
+        displayWrong();
+        countQ++
     }
 
     //handles loss after timer runs out
@@ -147,7 +147,7 @@ $(document).ready(function(){
         }
         else {
             console.log("wrong answer!");
-            //handleLoss();
+            handleLoss();
         }
     }
 
@@ -156,7 +156,9 @@ $(document).ready(function(){
         //changeImage();
         $("ul").hide();
         $('#questions').text("You're wrong! The answer was " + trivia.answers[countQ].correctAnswer);
-
+        setTimeout(function(){
+            gameInPlay();
+        }, 2000);
     }
 
     //create function to DISPLAY correct answer for a set amount of time
@@ -164,6 +166,9 @@ $(document).ready(function(){
         //changeImage();
         $("ul").hide();
         $('#questions').text("You're out of time! The answer was " + trivia.answers[countQ].correctAnswer);
+        setTimeout(function(){
+            gameInPlay();
+        }, 2000)
     }    
 
     //create function to DISPLAY correct answer for a set amount of time
@@ -179,6 +184,9 @@ $(document).ready(function(){
 
     var displayResults = function(){
         //display rightAnswers;
+        $("body").hide();
+        console.log(rightAnswers);
+        console.log(wrongAnswers);
         //display wrongAnswers;
         //display noAnswers;
         //set timeout, 
@@ -209,7 +217,7 @@ $(document).ready(function(){
             displayAnswer(countQ);
         }
         else {
-            //displayResults();
+            displayResults();
         }
     }
 });
