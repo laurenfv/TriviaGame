@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     var countTime = 29;
-    var countQ;
+    var countQ = 0;
     var timer;
     var clickedId;
     var wrongAnswers = 0;
@@ -31,8 +31,8 @@ $(document).ready(function(){
         }, {
             correctAnswer: "Manet",
             wrongAnswer1: "Vermeer",
-            wrongAnswer2: "Whistler",
-            wrongAnswer3: "Cassat"
+            wrongAnswer2: "Cassat",
+            wrongAnswer3: "Whistler"
         }]
         //images: 
       };
@@ -74,11 +74,20 @@ $(document).ready(function(){
 
     //create function to loop through all objects(answers) in array and display them display as UL at random
     var displayAnswer = function(){
-        // $('#answers').append('<li>' + trivia.answers[countQ].correctAnswer + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer1 + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer2 + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer3 + '</li>');
+        $('#answers').append('<li>' + trivia.answers[countQ].correctAnswer + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer1 + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer2 + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer3 + '</li>');
         
-            $.each(trivia.answers, function (key, value) {
-                $('li').text(value);
-            });
+        // // $.each(trivia.answers, function (i) {
+        //     $.each(trivia.answers[countQ], function (key, value) {
+        //         console.log(value);
+        //         // $('li').each(function (key, value) { 
+        //         //     $(this).text(value); 
+        //         // });
+        //         // //console.log(value);
+        //         // var newAnswer = value;
+        //         // $('li').text(newAnswer);
+        //         $("li").prepend(value);
+        //     });
+        // // });
     }
 
     //create function to display the answers in a random order
@@ -161,6 +170,7 @@ $(document).ready(function(){
     var displayRight = function(){
         //changeImage();
         $("ul").hide();
+        $("ul").empty();
         $('#questions').text("You're Right! The answer was " + trivia.answers[countQ].correctAnswer);
         setTimeout(function(){
             gameInPlay();
