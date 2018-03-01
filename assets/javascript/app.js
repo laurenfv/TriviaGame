@@ -8,15 +8,9 @@ $(document).ready(function(){
     var rightAnswers = 0;
     var noAnswers = 0;
 
-    var answerText = $("li").html();
 
     $("#time-remaining").hide();
     $("ul").hide();
-    //create array of objects for tivia questions
-    // var trivia = [
-    //     {"question":"Who painted The Girl With the Pearl Earring","correctAnswer":"Vermeer","wrongAnswer1":"Manet","wrongAnswer2":"Whistler","wrongAnswer3":"Cassat"},
-    //     {"question":"Who painted Luncheon on the Grass","correctAnswer":"Manet","wrongAnswer1":"Vermeer","wrongAnswer2":"Whistler","wrongAnswer3":"Cassat"}
-    // ];
 
     var trivia = {
         questions: [
@@ -37,11 +31,6 @@ $(document).ready(function(){
         //images: 
       };
 
-    // //create init game function
-    // var startGame = function(){
-    //     counter();
-    //     displayQuestion(countQ);
-    // }
 
     var displayTime = function(){
         $('#time-remaining').text("Time Remaining: " + countTime + " seconds");
@@ -74,20 +63,7 @@ $(document).ready(function(){
 
     //create function to loop through all objects(answers) in array and display them display as UL at random
     var displayAnswer = function(){
-        $('#answers').append('<li>' + trivia.answers[countQ].correctAnswer + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer1 + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer2 + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer3 + '</li>');
-        
-        // // $.each(trivia.answers, function (i) {
-        //     $.each(trivia.answers[countQ], function (key, value) {
-        //         console.log(value);
-        //         // $('li').each(function (key, value) { 
-        //         //     $(this).text(value); 
-        //         // });
-        //         // //console.log(value);
-        //         // var newAnswer = value;
-        //         // $('li').text(newAnswer);
-        //         $("li").prepend(value);
-        //     });
-        // // });
+        $('#answers').append('<li>' + trivia.answers[countQ].correctAnswer + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer1 + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer2 + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer3 + '</li>');   
     }
 
     //create function to display the answers in a random order
@@ -199,12 +175,16 @@ $(document).ready(function(){
 
     //create function to change background image to match right answer
     var changeImage = function(){
-
+        //get image name from array and change the css background image attribute
     }
 
     //create init game function
     var startGame = function(){
         countQ = 0;
+        countTime = 30;
+        wrongAnswers = 0;
+        rightAnswers = 0;
+        noAnswers = 0;
         $("ul").show();
         counter();
         displayQuestion(countQ);
