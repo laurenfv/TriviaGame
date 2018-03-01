@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var countTime = 29, countQ = 0, timer, clickedId;
+    var countTime = 29, countQ = 0, timer, clickedId, wrongAnswers = 0, rightAnswers = 0;
 
     var answerText = $("li").html();
 
@@ -46,7 +46,7 @@ $(document).ready(function(){
         if (countTime === -1){
             clearInterval(timer);
             //counter ended, do something here
-            //displayRight in set Interval
+            //displayOut in set Interval
             //countQ++
             return;
         }
@@ -107,7 +107,18 @@ $(document).ready(function(){
 
     //handles loss after timer runs out
     var handleLoss = function(){
+        wrongAnswers++;
+        //clearInterval(timer);
+        //displayWrong();
+        //countQ++
+    }
 
+    //handles loss after timer runs out
+    var handleWin = function(){
+        rightAnswers++;
+        //clearInterval(timer)
+        //displayRight();
+        //countQ++
     }
 
     //create conditional to check for right answer / answer will always be array[i].correctAnswer
@@ -115,39 +126,33 @@ $(document).ready(function(){
         if (clickedId === trivia.answers[countQ].correctAnswer){
             console.log(trivia.answers[countQ].correctAnswer);
             console.log("right answer!");
-            //
+            //handleWin();
         }
         else {
             console.log("wrong answer!");
+            //handleLoss();
         }
     }
 
     //create function to display timer
-    var display = function(){
+    var displayWrong = function(){
         countQ
 
         displayAnswer
     }
 
-    //create functions for when timer ends, display new questions
-    // var handleTimer = function(){
+    //create function to DISPLAY correct answer for a set amount of time
+    var displayOut = function(){
 
-    // }
-
-    //create function to change image
-    var changeImage = function(){
-
-    }
+    }    
 
     //create function to DISPLAY correct answer for a set amount of time
     var displayRight = function(){
 
     }
 
-    
+    //create function to change image
+    var changeImage = function(){
+
+    }
 });
-
-//button to start the game, when clicked displays 1st question
-
-//
-
