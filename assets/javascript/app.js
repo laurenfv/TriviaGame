@@ -1,10 +1,17 @@
 $(document).ready(function(){
 
-    var countTime = 29, countQ, timer, clickedId, wrongAnswers = 0, rightAnswers = 0, noAnswers = 0;
+    var countTime = 29;
+    var countQ;
+    var timer;
+    var clickedId;
+    var wrongAnswers = 0;
+    var rightAnswers = 0;
+    var noAnswers = 0;
 
     var answerText = $("li").html();
 
     $("#time-remaining").hide();
+    $("ul").hide();
     //create array of objects for tivia questions
     // var trivia = [
     //     {"question":"Who painted The Girl With the Pearl Earring","correctAnswer":"Vermeer","wrongAnswer1":"Manet","wrongAnswer2":"Whistler","wrongAnswer3":"Cassat"},
@@ -27,6 +34,7 @@ $(document).ready(function(){
             wrongAnswer2: "Whistler",
             wrongAnswer3: "Cassat"
         }]
+        //images: 
       };
 
     // //create init game function
@@ -66,7 +74,11 @@ $(document).ready(function(){
 
     //create function to loop through all objects(answers) in array and display them display as UL at random
     var displayAnswer = function(){
-        $('#answers').append('<li>' + trivia.answers[countQ].correctAnswer + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer1 + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer2 + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer3 + '</li>');
+        // $('#answers').append('<li>' + trivia.answers[countQ].correctAnswer + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer1 + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer2 + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer3 + '</li>');
+        
+            $.each(trivia.answers, function (key, value) {
+                $('li').text(value);
+            });
     }
 
     //create function to display the answers in a random order
@@ -112,9 +124,9 @@ $(document).ready(function(){
     //handles loss after timer runs out
     var handleWin = function(){
         rightAnswers++;
-        //clearInterval(timer)
-        //displayRight();
-        //countQ++
+        clearInterval(timer)
+        displayRight();
+        countQ++;
     }
 
     //create conditional to check for right answer / answer will always be array[i].correctAnswer
@@ -122,7 +134,7 @@ $(document).ready(function(){
         if (clickedId === trivia.answers[countQ].correctAnswer){
             console.log(trivia.answers[countQ].correctAnswer);
             console.log("right answer!");
-            //handleWin();
+            handleWin();
         }
         else {
             console.log("wrong answer!");
@@ -132,22 +144,30 @@ $(document).ready(function(){
 
     //create function to display timer
     var displayWrong = function(){
-        countQ
+        //changeImage();
+        $("ul").hide();
+        $('#questions').text("You're wrong! The answer was " + trivia.answers[countQ].correctAnswer);
 
-        displayAnswer
     }
 
     //create function to DISPLAY correct answer for a set amount of time
     var displayOut = function(){
-
+        //changeImage();
+        $("ul").hide();
+        $('#questions').text("You're out of time! The answer was " + trivia.answers[countQ].correctAnswer);
     }    
 
     //create function to DISPLAY correct answer for a set amount of time
     var displayRight = function(){
-
+        //changeImage();
+        $("ul").hide();
+        $('#questions').text("You're Right! The answer was " + trivia.answers[countQ].correctAnswer);
+        setTimeout(function(){
+            gameInPlay();
+        }, 2000);
     }
 
-    var displayResults(){
+    var displayResults = function(){
         //display rightAnswers;
         //display wrongAnswers;
         //display noAnswers;
@@ -155,7 +175,7 @@ $(document).ready(function(){
         //then reset function
     }
 
-    //create function to change image
+    //create function to change background image to match right answer
     var changeImage = function(){
 
     }
@@ -163,14 +183,17 @@ $(document).ready(function(){
     //create init game function
     var startGame = function(){
         countQ = 0;
+        $("ul").show();
         counter();
         displayQuestion(countQ);
         displayAnswer(countQ);
         
     }
 
-    var gameInPlay = function {
+    var gameInPlay = function() {
         if (countQ < trivia.questions.length){
+            countTime = 30;
+            $("ul").show();
             counter();
             displayQuestion(countQ);
             displayAnswer(countQ);
