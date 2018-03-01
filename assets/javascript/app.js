@@ -54,10 +54,10 @@ $(document).ready(function(){
         if (countTime === -1){
             clearInterval(timer);
             //counter ended, do something here
-            //displayOut in set Interval
-            //noAnswers++;
-            //countQ++
-            //console.log("out of time!");
+            displayOut();
+            noAnswers++;
+            countQ++;
+            console.log("out of time!");
             return;
         }
     }
@@ -155,6 +155,7 @@ $(document).ready(function(){
     var displayWrong = function(){
         //changeImage();
         $("ul").hide();
+        $("ul").empty();
         $('#questions').text("You're wrong! The answer was " + trivia.answers[countQ].correctAnswer);
         setTimeout(function(){
             gameInPlay();
@@ -165,6 +166,7 @@ $(document).ready(function(){
     var displayOut = function(){
         //changeImage();
         $("ul").hide();
+        $("ul").empty();
         $('#questions').text("You're out of time! The answer was " + trivia.answers[countQ].correctAnswer);
         setTimeout(function(){
             gameInPlay();
@@ -184,9 +186,11 @@ $(document).ready(function(){
 
     var displayResults = function(){
         //display rightAnswers;
-        $("body").hide();
+        // $("body").hide();
         console.log(rightAnswers);
         console.log(wrongAnswers);
+        console.log(noAnswers);
+        $("button").show();
         //display wrongAnswers;
         //display noAnswers;
         //set timeout, 
