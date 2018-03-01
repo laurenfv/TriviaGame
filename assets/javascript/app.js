@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var countTime = 29, countQ = 0, timer, clickedId, wrongAnswers = 0, rightAnswers = 0;
+    var countTime = 29, countQ, timer, clickedId, wrongAnswers = 0, rightAnswers = 0, noAnswers = 0;
 
     var answerText = $("li").html();
 
@@ -47,7 +47,9 @@ $(document).ready(function(){
             clearInterval(timer);
             //counter ended, do something here
             //displayOut in set Interval
+            //noAnswers++;
             //countQ++
+            //console.log("out of time!");
             return;
         }
     }
@@ -67,15 +69,9 @@ $(document).ready(function(){
         $('#answers').append('<li>' + trivia.answers[countQ].correctAnswer + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer1 + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer2 + '</li>').append('<li>' + trivia.answers[countQ].wrongAnswer3 + '</li>');
     }
 
-
+    //create function to display the answers in a random order
     var randomizeAnswers = function(){
 
-    }
-    //create init game function
-    var startGame = function(){
-        counter();
-        displayQuestion(countQ);
-        displayAnswer(countQ);
     }
 
     //create function to handle click
@@ -151,8 +147,36 @@ $(document).ready(function(){
 
     }
 
+    var displayResults(){
+        //display rightAnswers;
+        //display wrongAnswers;
+        //display noAnswers;
+        //set timeout, 
+        //then reset function
+    }
+
     //create function to change image
     var changeImage = function(){
 
+    }
+
+    //create init game function
+    var startGame = function(){
+        countQ = 0;
+        counter();
+        displayQuestion(countQ);
+        displayAnswer(countQ);
+        
+    }
+
+    var gameInPlay = function {
+        if (countQ < trivia.questions.length){
+            counter();
+            displayQuestion(countQ);
+            displayAnswer(countQ);
+        }
+        else {
+            //displayResults();
+        }
     }
 });
