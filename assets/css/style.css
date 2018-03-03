@@ -8,3 +8,13 @@ body {
     background-image: url("../images/background.jpg");
     background-size: cover;
 }
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+ul ol{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
