@@ -11,7 +11,8 @@ $(document).ready(function(){
     var trivia = {
         questions: [
             "Which artist was a student of Josef Albers (who belonged to the Bauhaus movement) and stated that Albers influenced him to do the absolute opposite of what he was being taught?",
-            "Who painted Luncheon on the Grass"
+            "Flatness was an important concept in abstract expressionsm. Which artist took that concept to a different level by staining the canvas?",
+            "Not many recognize that a female artist influenced Louis to utilize staining in his work. Who's studio did he visit in order to get this inspiration?"
         ],
         answers: [{
             correctAnswer: "Robert Rauschenberg",
@@ -19,14 +20,20 @@ $(document).ready(function(){
             wrongAnswer2: "Cy Twombly",
             wrongAnswer3: "Mark Rothko"
         }, {
-            correctAnswer: "Manet",
-            wrongAnswer1: "Vermeer",
-            wrongAnswer2: "Cassat",
-            wrongAnswer3: "Whistler"
+            correctAnswer: "Morris Louis",
+            wrongAnswer1: "Jackson Pollock",
+            wrongAnswer2: "Jasper Johns",
+            wrongAnswer3: "Franz Kline"
+        }, {
+            correctAnswer: "Helen Frankenthaler",
+            wrongAnswer1: "Lee Krasner",
+            wrongAnswer2: "Perle Fine",
+            wrongAnswer3: "Mary Abott"
         }],
         images: [
             "image1.jpg",
-            "test.png"
+            "image2.jpg",
+            "image3.jpg"
         ]
       };
 
