@@ -14,14 +14,14 @@ $(document).ready(function(){
 
     var trivia = {
         questions: [
-            "Who painted The Girl With the Pearl Earring",
+            "Which artist was a student of Josef Albers (who belonged to the Bauhaus movement) and stated that Albers influenced him to do the absolute opposite of what he was being taught?",
             "Who painted Luncheon on the Grass"
         ],
         answers: [{
-          correctAnswer: "Vermeer",
-          wrongAnswer1: "Manet",
-          wrongAnswer2: "Whistler",
-          wrongAnswer3: "Cassat"
+            correctAnswer: "Robert Rauschenberg",
+            wrongAnswer1: "Willem De Kooning",
+            wrongAnswer2: "Cy Twombly",
+            wrongAnswer3: "Mark Rothko"
         }, {
             correctAnswer: "Manet",
             wrongAnswer1: "Vermeer",
@@ -29,6 +29,7 @@ $(document).ready(function(){
             wrongAnswer3: "Whistler"
         }],
         images: [
+            "image1.jpg",
             "test.png"
         ]
       };
@@ -48,7 +49,6 @@ $(document).ready(function(){
             displayOut();
             noAnswers++;
             countQ++;
-            console.log("out of time!");
             return;
         }
     }
@@ -118,64 +118,53 @@ $(document).ready(function(){
 
     //create conditional to check for right answer / answer will always be array[i].correctAnswer
     var checkAnswer = function(){
-        if (clickedId === trivia.answers[countQ].correctAnswer){
-            console.log(trivia.answers[countQ].correctAnswer);
-            console.log("right answer!");
+        if (clickedId == trivia.answers[countQ].correctAnswer){
             handleWin();
         }
         else {
-            console.log("wrong answer!");
             handleLoss();
         }
     }
 
     //create function to display timer
     var displayWrong = function(){
-        //changeImage();
+        changeImage();
         $("ul").hide();
         $("ul").empty();
         $('#questions').text("You're wrong! The answer was " + trivia.answers[countQ].correctAnswer);
         setTimeout(function(){
             gameInPlay();
-        }, 2000);
+        }, 3000);
     }
 
     //create function to DISPLAY correct answer for a set amount of time
     var displayOut = function(){
-        //changeImage();
+        changeImage();
         $("ul").hide();
         $("ul").empty();
         $('#questions').text("You're out of time! The answer was " + trivia.answers[countQ].correctAnswer);
         setTimeout(function(){
             gameInPlay();
-        }, 2000)
+        }, 3000)
     }    
 
     //create function to DISPLAY correct answer for a set amount of time
     var displayRight = function(){
-        // changeImage();
+        changeImage();
         $("ul").hide();
         $("ul").empty();
         $('#questions').text("You're Right! The answer was " + trivia.answers[countQ].correctAnswer);
         setTimeout(function(){
             gameInPlay();
-        }, 2000);
+        }, 3000);
     }
 
     var displayResults = function(){
-        //display rightAnswers;
-        // $("body").hide();
-        //$("p").empty();
-        console.log(rightAnswers);
-        console.log(wrongAnswers);
-        console.log(noAnswers);
+        $("#questions").text("Great Job! Here's how you did:");
+        $("button").text("Start Over?");
         $("button").show();
         $("ul").show();
-        $('#answers').append('<li>' + 'Right Answers: ' + rightAnswers + '</li>').append('<li>' + 'Wrong Answers: ' + wrongAnswers + '</li>').append('<li>' + 'Unanswered: ' + noAnswers + '</li>');
-        //display wrongAnswers;
-        //display noAnswers;
-        //set timeout, 
-        //then reset function
+        $('#answers').append('<ol>' + 'Right Answers: ' + rightAnswers + '</ol>').append('<ol>' + 'Wrong Answers: ' + wrongAnswers + '</ol>').append('<ol>' + 'Unanswered: ' + noAnswers + '<ol>');
     }
 
     //create function to change background image to match right answer
@@ -196,7 +185,6 @@ $(document).ready(function(){
         counter();
         displayQuestion(countQ);
         displayAnswer(countQ);
-        changeImage();
         
     }
 

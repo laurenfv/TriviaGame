@@ -1,0 +1,10 @@
+h1 {
+    font-family: 'Plaster', cursive;
+}
+.jumbotron {
+    background-color:rgba(255, 255, 255, 0.5);
+}
+body {
+    background-image: url("../images/test.png");
+    width: 100%;
+}
