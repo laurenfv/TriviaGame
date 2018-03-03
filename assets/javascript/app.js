@@ -8,10 +8,6 @@ $(document).ready(function(){
     var rightAnswers = 0;
     var noAnswers = 0;
 
-
-    $("#time-remaining").hide();
-    $("ul").hide();
-
     var trivia = {
         questions: [
             "Which artist was a student of Josef Albers (who belonged to the Bauhaus movement) and stated that Albers influenced him to do the absolute opposite of what he was being taught?",
@@ -34,6 +30,10 @@ $(document).ready(function(){
         ]
       };
 
+    var preClick = function() {
+        $("#time-remaining").hide();
+        $("ul").hide();
+    }
 
     var displayTime = function(){
         $('#time-remaining').text("Time Remaining: " + countTime + " seconds");
@@ -55,8 +55,7 @@ $(document).ready(function(){
 
     var counter = function(){
         timer = setInterval(handleTimer,1000);
-    }
-    
+    }   
 
     //create function to loop through all objects(questions) in array and display them display with answers at random
     var displayQuestion = function(index){
@@ -69,9 +68,9 @@ $(document).ready(function(){
     }
 
     //create function to display the answers in a random order
-    var randomizeAnswers = function(){
+    // var randomizeAnswers = function(){
 
-    }
+    // }
 
     //create function to handle click
     var handleFirstClick = function(){
@@ -87,9 +86,6 @@ $(document).ready(function(){
         });
     }
 
-    handleFirstClick();
-    
-
     //handles on.click event for answers
     var handleAnswerClick = function(){
         $("ul").on("click", "li", function() {
@@ -97,8 +93,6 @@ $(document).ready(function(){
             checkAnswer();
         });
     }
-
-    handleAnswerClick();
 
     //handles loss after timer runs out
     var handleLoss = function(){
@@ -126,37 +120,31 @@ $(document).ready(function(){
         }
     }
 
-    //create function to display timer
-    var displayWrong = function(){
+    var basicDisplayChange = function() {
         changeImage();
         $("ul").hide();
         $("ul").empty();
-        $('#questions').text("You're wrong! The answer was " + trivia.answers[countQ].correctAnswer);
         setTimeout(function(){
             gameInPlay();
         }, 3000);
     }
 
+    //create function to display timer
+    var displayWrong = function(){
+        basicDisplayChange();
+        $('#questions').text("You're wrong! The answer was " + trivia.answers[countQ].correctAnswer);
+    }
+
     //create function to DISPLAY correct answer for a set amount of time
     var displayOut = function(){
-        changeImage();
-        $("ul").hide();
-        $("ul").empty();
+        basicDisplayChange();
         $('#questions').text("You're out of time! The answer was " + trivia.answers[countQ].correctAnswer);
-        setTimeout(function(){
-            gameInPlay();
-        }, 3000)
     }    
 
     //create function to DISPLAY correct answer for a set amount of time
     var displayRight = function(){
-        changeImage();
-        $("ul").hide();
-        $("ul").empty();
+        basicDisplayChange();
         $('#questions').text("You're Right! The answer was " + trivia.answers[countQ].correctAnswer);
-        setTimeout(function(){
-            gameInPlay();
-        }, 3000);
     }
 
     var displayResults = function(){
@@ -180,6 +168,7 @@ $(document).ready(function(){
         wrongAnswers = 0;
         rightAnswers = 0;
         noAnswers = 0;
+        $("body").css("background-image", "url('assets/images/background.jpg')");
         $("ul").empty();
         $("ul").show();
         counter();
@@ -200,4 +189,8 @@ $(document).ready(function(){
             displayResults();
         }
     }
+
+    preClick();
+    handleFirstClick();
+    handleAnswerClick();
 });
