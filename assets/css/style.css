@@ -1,5 +1,6 @@
 h1 {
     font-family: 'Plaster', cursive;
+    font-size: 52px;
 }
 .jumbotron {
     background-color:rgba(255, 255, 255, 0.75);
@@ -17,4 +18,17 @@ ul ol{
     list-style-type: none;
     padding: 0;
     margin: 0;
+}
+li{
+    font-size: 24px;
+}
+ol{
+    font-size: 24px;
+}
+li:hover {
+    color: rgb(199, 96, 113);
+    transform: scale(1.5, 1.5);
+}
+#questions {
+    font-size: 36px;
 }
