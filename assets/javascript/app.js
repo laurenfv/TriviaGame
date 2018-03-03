@@ -76,7 +76,8 @@ $(document).ready(function(){
 
     //create function to display the answers in a random order
     // var randomizeAnswers = function(){
-
+        //tried creating a for each loop to make it more dynamic as to not need to randomize, didn't work
+        //tried to randomize/shuffle could not get it to work either
     // }
 
     //create function to handle click
