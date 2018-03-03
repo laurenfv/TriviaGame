@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var countTime = 29;
+    var countTime;
     var countQ = 0;
     var timer;
     var clickedId;
@@ -27,8 +27,10 @@ $(document).ready(function(){
             wrongAnswer1: "Vermeer",
             wrongAnswer2: "Cassat",
             wrongAnswer3: "Whistler"
-        }]
-        //images: 
+        }],
+        images: [
+            "test.png"
+        ]
       };
 
 
@@ -151,7 +153,7 @@ $(document).ready(function(){
 
     //create function to DISPLAY correct answer for a set amount of time
     var displayRight = function(){
-        //changeImage();
+        // changeImage();
         $("ul").hide();
         $("ul").empty();
         $('#questions').text("You're Right! The answer was " + trivia.answers[countQ].correctAnswer);
@@ -163,10 +165,13 @@ $(document).ready(function(){
     var displayResults = function(){
         //display rightAnswers;
         // $("body").hide();
+        //$("p").empty();
         console.log(rightAnswers);
         console.log(wrongAnswers);
         console.log(noAnswers);
         $("button").show();
+        $("ul").show();
+        $('#answers').append('<li>' + 'Right Answers: ' + rightAnswers + '</li>').append('<li>' + 'Wrong Answers: ' + wrongAnswers + '</li>').append('<li>' + 'Unanswered: ' + noAnswers + '</li>');
         //display wrongAnswers;
         //display noAnswers;
         //set timeout, 
@@ -176,6 +181,7 @@ $(document).ready(function(){
     //create function to change background image to match right answer
     var changeImage = function(){
         //get image name from array and change the css background image attribute
+        $("body").css("background-image", "url('assets/images/" + trivia.images[countQ] + "')");
     }
 
     //create init game function
@@ -185,10 +191,12 @@ $(document).ready(function(){
         wrongAnswers = 0;
         rightAnswers = 0;
         noAnswers = 0;
+        $("ul").empty();
         $("ul").show();
         counter();
         displayQuestion(countQ);
         displayAnswer(countQ);
+        changeImage();
         
     }
 
