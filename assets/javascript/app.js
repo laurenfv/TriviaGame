@@ -139,19 +139,19 @@ $(document).ready(function(){
     //create function to display timer
     var displayWrong = function(){
         basicDisplayChange();
-        $('#questions').text("You're wrong! The answer was " + trivia.answers[countQ].correctAnswer);
+        $('#questions').text("You're wrong! The answer was " + trivia.answers[countQ].correctAnswer + ".");
     }
 
     //create function to DISPLAY correct answer for a set amount of time
     var displayOut = function(){
         basicDisplayChange();
-        $('#questions').text("You're out of time! The answer was " + trivia.answers[countQ].correctAnswer);
+        $('#questions').text("You're out of time! The answer was " + trivia.answers[countQ].correctAnswer + ".");
     }    
 
     //create function to DISPLAY correct answer for a set amount of time
     var displayRight = function(){
         basicDisplayChange();
-        $('#questions').text("You're Right! The answer was " + trivia.answers[countQ].correctAnswer);
+        $('#questions').text("You're Right! The answer was " + trivia.answers[countQ].correctAnswer + ".");
     }
 
     var displayResults = function(){
