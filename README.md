@@ -22,7 +22,7 @@
 - Upon starting the game it displays one question at a time, each one set with a time of 30 seconds.
 - When an answer is selected, the game will move on.
 - If no answer is selected, it will move on after 30 seconds.
-- After an answer is selected or the timer runs out, it let's the user know is they were right or wrong and what the correct answer was. 
+- After an answer is selected or the timer runs out, it lets the user know is they were right or wrong and what the correct answer was. 
 - When the game displays the right answer, the background changes to an artwork related to the correct answer.
 - Upon completion of the game, it displays how many questions were right, wrong, and unanswered.
 - The user has the option to start the game over and it will do so without reloading the page.
