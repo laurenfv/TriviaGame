@@ -1,7 +1,8 @@
 # Trivia Game
 > This trivia game tests your knowledge on abstract expressionism - but beware, the questions are timed!
 
-![](header.png)
+![picture](assets/images/test8.png)
+![picture](assets/images/test2.png)
 
 ## Technologies Used
 
